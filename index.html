@@ -1,15 +1,131 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Perpustakaan Putri Rania Indriyani</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Perpustakaan</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                background-color: #f5f5dc;
+            }
+            header, footer {
+                background: #d2691e;
+                color: white;
+                padding: 15px;
+            }
+            nav {
+                background: #cd853f;
+                padding: 10px;
+            }
+            nav a {
+                color: white;
+                margin: 0 15px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .container {
+                padding: 20px;
+            }
+            table {
+                border: 1px solid black;
+                border-collapse: collapse;
+                margin: auto;
+                padding: 10px;
+                background-color: #fff3f3;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 10px;
+            }
+            form {
+                width: 50%;
+                margin: auto;
+                text-align: left;
+                background-color: #deb887;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            input, textarea {
+                width: 100%;
+                margin-bottom: 10px;
+                padding: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Perpustakaan</h1>
+        </header>
+        
+        <nav>
+            <a href="#home" onclick="showSection('home')">Home</a>
+            <a href="#about" onclick="showSection('about')">About Me</a>
+            <a href="#contact" onclick="showSection('contact')">Contact Us</a>
+        </nav>
+        
+        <div class="container" id="home">
+            <h2>Selamat Datang di Perpustakaan Putri Rania Indriyani</h2>
+            <p>Selamat datang di perpustakaan saya, platform perpustakaan digital yang menyediakan akses mudah ke berbagai jenis koleksi yang dapat diakses dengan mudah. Dengan perpustakaan digital ini, Anda dapat menjelajahi berbagai kategori bacaan dari mana saja dan kapan saja. Terima kasih telah menjadi telah berkunjung ke perpustakaan ini. Selamat membaca dan menjelajahi dunia pengetahuan!
+            </p>
+            <h2>Collaboration</h2>
+            <a href="https://library.uii.ac.id/">Perpustakaan Islam Indonesia</a>
+        </div>
+        
+        <div class="container" id="about" style="display: none;">
+            <h2>About Me</h2>
+            <table>
+                <tr><th>Nama</th><td>Putri Rania Indriyani</td></tr>
+                <tr><th>NIM</th><td>220709032</td></tr>
+                <tr><th>Program Studi</th><td>Perpustakaan dan Sains Informasi</td></tr>
+                <tr><th>Fakultas</th><td>Ilmu Budaya</td></tr>
+                <tr><th>Universitas</th><td>Sumatera Utara</td></tr>
+                <tr><th>Domisili</th><td>Medan</td></tr>
+                <tr><th>E-mail</th><td>putriraniaindriyani@gmail.com</td></tr>
+                <tr><th>Media Sosial</th><td><h3><a href="https://x.com/slvrqueenrnxy?t=kZOZIK6DHKaBHSkk7D3YoQ&s=08">Twitter</a></h3>
+            </table>
+        </div>
+        </div>
+        
+        <div class="container" id="contact" style="display: none;">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama" name="nama" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="pesan">Kritik & Saran:</label>
+                <textarea id="pesan" name="pesan" rows="4" required></textarea>
+                
+                <button type="submit">Kirim</button>
+            </form>
+        </div>
+        
+        <script>
+            function showSection(sectionId) {
+                document.getElementById('home').style.display = 'none';
+                document.getElementById('about').style.display = 'none';
+                document.getElementById('contact').style.display = 'none';
+                
+                document.getElementById(sectionId).style.display = 'block';
+            }
+        </script>
+    </body>
+    </html>
+    <title>Document</title>
 </head>
 <body>
-<h2>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani</h2>
-  <p>Selamat Datang di Perpustakaan Digital saya, platform perpustakaan digital yang menyediakan akses mudah ke berbagai koleksi buku, jurnal, artikel, dan bahan bacaan lainnya. Dengan perpustakaan digital ini, Anda dapat menjelajahi berbagai kategori bacaan dari mana saja dan kapan saja. Terima kasih telah menjadi bagian dari komunitas kami. Selamat membaca dan menjelajahi dunia pengetahuan!
-
-</p> 
-</style>
-</head>
-<body>  
- <li class="mb-2"><a href="#" class="text-blue-700 underline">About Me</a></li>
- <li><a href="#" class="text-blue-700 underline">Contact Us</a></li>
-
+    <footer>
+        <p>&copy; 2025 Perpustakaan Putri Rania Indriyani</p>
+    </footer>
+</body>
+</html>
