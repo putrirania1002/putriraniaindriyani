@@ -24,27 +24,28 @@
         <p>Jenis Kelamin: Perempuan</p>
         <p>E-mail: putriraniaindriyani@gmail.com</p>
     </section>
-   <section id="kritik">
-        <h2>Kritik & Saran</h2>
-        <form id="formKritik">
+  <h2>Formulir Kritik dan Saran</h2>
+        <form id="kritikSaranForm">
             <label for="nama">Nama:</label>
-            <input type="text" id="nama" required>
+            <input type="text" id="nama" name="nama" required>
             
-            <label for="pesan">Pesan:</label>
-            <textarea id="pesan" rows="4" required></textarea>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="pesan">Kritik & Saran:</label>
+            <textarea id="pesan" name="pesan" rows="4" required></textarea>
             
             <button type="submit">Kirim</button>
         </form>
-    </section>
+        <p id="successMessage" style="color: green; display: none;">Terima kasih atas kritik dan sarannya!</p>
+    </div>
 
     <script>
-        document.getElementById('formKritik').addEventListener('submit', function(event) {
+        document.getElementById("kritikSaranForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            alert('Terima kasih atas kritik dan saran Anda!');
-            document.getElementById('formKritik').reset();
+            document.getElementById("successMessage").style.display = "block";
+            document.getElementById("kritikSaranForm").reset();
         });
     </script>
 </body>
 </html>
- 
-
