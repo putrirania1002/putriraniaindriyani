@@ -2,15 +2,16 @@
 <html lang="en">
     <head>
     <script>
-        document.write ("script diantara tag head")
+        function borrowBook(bookTitle) {
+            let list = document.getElementById("borrowed-list");
+            let item = document.createElement("li");
+            item.textContent = bookTitle;
+            list.appendChild(item);
+        }
+        function searchBook() {
+            alert("Fitur pencarian sedang dalam pengembangan");
+        }
     </script>
-    <head>
-    </body>
-<script>
-document.write ("script diantara tag body"
-</script>
-    </body>
-</html>
         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<!DOCTYPE html>
