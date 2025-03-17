@@ -86,7 +86,51 @@
             <input type="text" id="search" placeholder="Cari buku...">
             <button onclick="searchBook()">Cari</button>
         </section>
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
 
+const books = [
+  { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
+  { title: "1984", author: "George Orwell" },
+  { title: "To Kill a Mockingbird", author: "Harper Lee" },
+  { title: "Moby-Dick", author: "Herman Melville" }
+];
+
+export default function DigitalLibrary() {
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <div className="flex flex-wrap gap-6 justify-center p-10">
+      {books.map((book, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setSelected(book)}
+        >
+          <Card className="w-60 h-40 p-4 shadow-lg bg-white">
+            <CardContent className="text-center">
+              <h3 className="text-xl font-semibold">{book.title}</h3>
+              <p className="text-sm text-gray-500">by {book.author}</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+
+      {selected && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white p-4 rounded-lg shadow-lg"
+        >
+          <p className="text-lg">You selected: {selected.title}</p>
+        </motion.div>
+      )}
+    </div>
+  );
+}
         <section id="home">
             <h3>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani!</h3>
             <p>
