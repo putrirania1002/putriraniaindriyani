@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>    
+!DOCTYPE html>
+<html lang="id">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<!DOCTYPE html>
     <html lang="id">
@@ -8,6 +8,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perpustakaan Putri Rania Indriyani</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -16,103 +18,109 @@
                 text-align: center;
                 background-color: #f5f5dc;
             }
-            header, footer {
+            header {
+                display: flex;
+                justify-content: space-between;
                 background: #d2691e;
                 color: white;
                 padding: 15px;
                 text-align: center;
-                border-bottom: 3px solid #f4a25b /* Menambahkan garis pemisah */
-             }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            margin-top: 20px;
-        }
-        nav ul li {
-            display: inline-block;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            display: block;
-            padding: 10px 20px;
-            background-color: #fcf3e3;
-            color: #013d5a;
-            text-decoration: none;
-            border-radius: 5px;
-            border: 2px solid #013d5a;
-            font-weight: bold;
-            text-align: center;
-        }
-        nav ul li a:hover {
-            background-color: #013d5a;
-            color: #fcf3e3;
-        
-        }
-        container {
+                border-bottom: 3px solid #cd853f; /*Menambahkan garis pimisah*/
+            }
+            .logo {
+                font-size: 26px;
+                font-weight: bold;
+            }
+            nav ul {
+                list-style: none;
+                padding: 0;
+                text-align: center;
+                margin-top: 20px;
+            }
+            nav ul li {
+                display: inline-block;
+                margin: 0 15px;
+            }
+            nav ul li a {
+                display: block;
+                padding: 10px 20px;
+                background-color: #fcf3e3;
+                color: #cd853f;
+                text-decoration: none;
+                border-radius: 5px;
+                border: 2px solid #cd853f;
+                font-weight: bold;
+                text-align: center;
+            }
+            nav ul li a:hover {
+                background-color: #cd853f;
+                color: #fcf3e3;
+            }
+            section {
                 padding: 20px;
+                margin: 20px;
+                background: #fcf3e3;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                text-align: justify;
             }
-            table {
-                border: 1px solid black;
-                border-collapse: collapse;
-                margin: auto;
-                padding: 10px;
-                background-color: #fff3f3;
-            }
-            th, td {
-                border: 1px solid black;
-                padding: 10px;
-            }
-            form {
-                width: 50%;
-                margin: auto;
-                text-align: left;
-                background-color: #deb887;
-                padding: 20px;
-                border-radius: 10px;
-            }
-            input, textarea {
-                width: 100%;
-                margin-bottom: 10px;
-                padding: 8px;
+            footer{
+                text-align: center;
+                padding: 15px;
+                background-color: #d2691e;
+                color: #fcf3e3;
             }
         </style>
     </head>
-    <body>
-        <header>
-            <h1>Perpustakaan Putri Rania Indriyani</h1>
-            <nav>
+    </body>
+        <header class="header">
+            <div class="logo">Perpustakaan Putri Rania Indriyani</div>
+            <nav class="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Me</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
-         </header>
-        
-        <div class="container" id="home">
-            <h2>Selamat Datang di Perpustakaan Putri Rania Indriyani</h2>
-            <p>Selamat datang di perpustakaan saya, platform perpustakaan digital yang menyediakan akses mudah ke berbagai jenis koleksi yang dapat diakses dengan mudah. Dengan perpustakaan digital ini, Anda dapat menjelajahi berbagai kategori bacaan dari mana saja dan kapan saja. Terima kasih telah berkunjung ke perpustakaan ini. Selamat membaca dan menjelajahi dunia pengetahuan!
+        </header>
+
+        <section id="home">
+            <input type="text" id="search" placeholder="Cari buku...">
+            <button onclick="searchBook()">Cari</button>
+        </section>
+
+        <section id="home">
+            <h1>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani!</h1>
+            <p>
+              Selamat datang di perpustakaan saya, platform perpustakaan digital yang menyediakan akses mudah ke berbagai jenis koleksi yang dapat diakses dengan mudah. 
             </p>
-<section id="home">
-    <h3>Collaboration</h3>
-    <p>Perpustakaan Putri Rania Indriyani bekerja sama dengan <a href="https://library.uii.ac.id/" target="_blank">Perpustakaan Islam Indonesia</a> untuk memperluas jangkauan dan mempermudah akses bagi pengguna dalam menemukan informasi yang dibutuhkan.</p>
-</section>
+            <p>
+              Dengan perpustakaan digital ini, Anda dapat menjelajahi berbagai kategori bacaan dari mana saja dan kapan saja.
+            </p>
+            <p>
+              Terima kasih telah berkunjung ke perpustakaan ini. Selamat membaca dan menjelajahi dunia pengetahuan!
+            </p>
 
-<footer>
-    <p>&copy; 2025 Putri Rania Indriyani</p>
-</footer>
+        </section>
+            <section id="home">
+            <h3>Collaboration</h3>
+            <p>Perpustakaan Putri Rania Indriyani bekerja sama dengan <a href="https://library.uii.ac.id/" target="_blank">Perpustakaan Islam Indonesia</a> untuk memperluas jangkauan dan mempermudah akses bagi pengguna dalam menemukan informasi yang dibutuhkan.</p>
+        </section>
 
+        <footer>
+            <p>&copy; 2025 - Putri Rania Indriyani</p>
+        </footer>    
+                  
 <script>
-        function borrowBook(bookTitle) {
-            let list = document.getElementById("borrowed-list");
-            let item = document.createElement("li");
-            item.textContent = bookTitle;
-            list.appendChild(item);
-        }
-        function searchBook() {
-            alert("Fitur pencarian sedang dalam pengembangan");
-        }
-    </script>
+    function borrowBook(bookTitle) {
+        let list = document.getElementById("borrowed-list");
+        let item = document.createElement("li");
+        item.textContent = bookTitle;
+        list.appendChild(item);
+    }
+    function searchBook() {
+        alert("Fitur pencarian sedang dalam pengembangan");
+    }
+</script>
 </body>
 </html>
