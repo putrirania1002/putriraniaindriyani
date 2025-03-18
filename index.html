@@ -3,96 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage - Perpustakaan Putri Rania Indriyani</title>
+    <title>Contact Us</title>
     <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-                background-color: #ffebd7;
-            }
-            header {
-                display: flex;
-                justify-content: space-between;
-                background: #d2691e;
-                color: white;
-                padding: 15px;
-                text-align: center;
-                border-bottom: 3px solid #eccaa8; /Menambahkan garis pimisah/
-            }
-            .logo {
-                font-size: 28px;
-                font-weight: bold;
-            }
-            nav ul {
-                list-style: none;
-                padding: 0;
-                text-align: center;
-                margin-top: 20px;
-            }
-            nav ul li {
-                display: inline-block;
-                margin: 0 15px;
-            }
-            nav ul li a {
-                display: block;
-                padding: 10px 20px;
-                background-color: #ffebd7;
-                color: #cd853f;
-                text-decoration: none;
-                border-radius: 5px;
-                border: 2px solid #cd853f;
-                font-weight: bold;
-                text-align: center;
-            }
-            nav ul li a:hover {
-                background-color: #cd853f;
-                color: #fcf3e3;
-            }
-            #search {
-                width: 50%;  /* Memperbesar lebar kolom pencarian */
-                padding: 10px;
-                border-radius: 5px;
-                border: 2px solid #d2691e;
-                margin-top: 10px; /* Menambahkan margin atas agar ada jarak dengan tombol */
-                font-size: 16px;
-                display: inline-block;
-            }
-            section {
-                padding: 20px;
-                margin: 20px;
-                background: #fcf3e3;
-                border-radius: 8px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                text-align: justify;
-            }
-            footer{
-                text-align: center;
-                padding: 15px;
-                background-color: #d2691e;
-                color: #fcf3e3;
-            }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Perpustakaan Putri Rania Indriyani</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Me</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #feead7;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            background: #d2691e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 3px solid #eccaa8; /*Menambahkan garis pimisah*/
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #ffd7ae;
+            color: #cd853f;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #cd853f;
+            font-weight: bold;
+            text-align: center;
+        }
+        nav ul li a:hover {
+            background-color: #cd853f;
+            color: #fcf3e3;
+        }
+        #search {
+            width: 50%;  /* Memperbesar lebar kolom pencarian */
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #d2691e;
+            margin-top: 10px; /* Menambahkan margin atas agar ada jarak dengan tombol */
+            font-size: 16px;
+            display: inline-block;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background: #fcf3e3;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #d2691e;
+            color: #fcf3e3;
+        }
+                /* Animasi bergerak */
+                .animated-link {
+            position: fixed;
+            bottom: 5px;
+            left: 5px;
+            z-index: 1000;  /* Membuat gambar animasi berada di kiri atas elemen lainnya */
+            transition: transform 0.3s ease; /* Menambahkan efek transisi */
+        }
+        .animated-link:hover {
+            transform: scale(1.1); /* Menambahkan efek saat hover */
+        }
+        </style>
+    </head>
+    </body>
+        <header class="header">
+            <div class="logo">Perpustakaan Putri Rania Indriyani</div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Animasi bergerak -->
+        <a href="https://www.gambaranimasi.org/cat-buku-53.htm"><img src="https://www.gambaranimasi.org/data/media/53/animasi-bergerak-buku-0016.gif" border="0" alt="animasi-bergerak-buku-0016" /></a>
 
         <section id="home">
             <input type="text" id="search" placeholder="Cari buku...">
             <button onclick="searchBook()">Cari</button>
         </section>
-
-        <div style="position: fixed; bottom: 0px; left: 10px;width:130px;height:160px;"><a href="http://www.cakrawaladunia.com/" target="_blank"><img border="0" src="http://s.myniceprofile.com/myspacepic/228/th/22801.gif" title="My widget" alt="animasi bergerak gif" /></a><small><center><a href="http://permathic.blogspot.com/2012/04/kumpulan-widget-animasi-yang-lucu-dan.html" target="_blank" title="Cara Memasang Widget Animasi"></a></center></small></div>
 
         <section id="home">
             <h3>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani!</h3>
