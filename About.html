@@ -9,94 +9,93 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Perpustakaan Putri Rania Indriyani</title>
           <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #feead7;
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                background-color: #ffebd7;
+            }
+            header {
+                display: flex;
+                justify-content: space-between;
+                background: #d2691e;
+                color: white;
+                padding: 15px;
+                text-align: center;
+                border-bottom: 3px solid #eccaa8; /*Menambahkan garis pimisah*/
+            }
+            .logo {
+                font-size: 28px;
+                font-weight: bold;
+            }
+            nav ul {
+                list-style: none;
+                padding: 0;
+                text-align: center;
+                margin-top: 20px;
+            }
+            nav ul li {
+                display: inline-block;
+                margin: 0 15px;
+            }
+            nav ul li a {
+                display: block;
+                padding: 10px 20px;
+                background-color: #ffebd7;
+                color: #cd853f;
+                text-decoration: none;
+                border-radius: 5px;
+                border: 2px solid #cd853f;
+                font-weight: bold;
+                text-align: center;
+            }
+            nav ul li a:hover {
+                background-color: #cd853f;
+                color: #fcf3e3;
+            }
+            section {
+                padding: 20px;
+                margin: 20px;
+                background: #fcf3e3;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                text-align: justify;
+            }
+            .biodata-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
+            }
+            .biodata-table th {
+                border: 1px solid #fcf3e3;
+                padding: 10px;
+                text-align: left;
+            }
+            .biodata-table td {
+                border: 1px solid #f4a25b;
+                padding: 10px;
+                text-align: left;
+            }
+            .biodata-table th {
+                background-color: #f4a25b;
+                color: #fcf3e3;
+            }
+            .biodata-table td {
+                background-color: #fcf3e3;
+            }
+            .biodata-table td a {
+                color: #000000;
+                text-decoration: none;
+                font-weight: bold;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            background: #d2691e;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 3px solid #eccaa8; /*Menambahkan garis pimisah*/   
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            margin-top: 20px;
-        }
-        nav ul li {
-            display: inline-block;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            display: block;
-            padding: 10px 20px;
-            background-color: #ffd7ae;
-            color: #cd853f;
-            text-decoration: none;
-            border-radius: 5px;
-            border: 2px solid #cd853f;
-            font-weight: bold;
-            text-align: center;
-        }
-        nav ul li a:hover {
-            background-color: #cd853f;
-            color: #fcf3e3;
-        }
-        section {
-            padding: 20px;
-            margin: 20px;
-            background: #fcf3e3;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: justify;
-        }
-        .biodata-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        .biodata-table th {
-            border: 1px solid #fcf3e3;
-            padding: 10px;
-            text-align: left;
-        }
-        .biodata-table td {
-            border: 1px solid #f4a25b;
-            padding: 10px;
-            text-align: left;
-        
-        }
-        .biodata-table th {
-            background-color: #f4a25b;
-            color: #fcf3e3;
-        }
-        .biodata-table td {
-            background-color: #fcf3e3;
-        }
-        .biodata-table td a {
-            color: #000000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        footer{
-            text-align: center;
-            padding: 15px;
-            background-color: #d2691e;
-            color: #fcf3e3;
-        }
-    </style>
+            footer{
+                text-align: center;
+                padding: 15px;
+                background-color: #d2691e;
+                color: #fcf3e3;
+            }
+        </style>
     </head>
     </body>
         <header class="header">
@@ -110,7 +109,6 @@
             </nav>
         </header>
 
-    
         <section id="about">
             <table class="biodata-table">
                 <th>Kategori</th>
