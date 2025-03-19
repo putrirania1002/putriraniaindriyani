@@ -14,25 +14,36 @@
         }
         header {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             background: #d2691e;
             color: white;
             padding: 15px;
-            text-align: center;
-            border-bottom: 3px solid #eccaa8; /*Menambahkan garis pimisah*/
+            border-bottom: 3px solid #eccaa8;
         }
         .logo {
-            font-size: 28px;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            margin-right: 15px;
+            width: 80px;
+            height: auto;
+        }
+        .logo h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+        nav {
+            margin-left: auto;
         }
         nav ul {
             list-style: none;
             padding: 0;
-            text-align: center;
-            margin-top: 20px;
+            margin: 0;
+            display: flex;
         }
         nav ul li {
-            display: inline-block;
             margin: 0 15px;
         }
         nav ul li a {
@@ -44,20 +55,18 @@
             border-radius: 5px;
             border: 2px solid #cd853f;
             font-weight: bold;
-            text-align: center;
         }
         nav ul li a:hover {
             background-color: #cd853f;
             color: #fcf3e3;
         }
         #search {
-            width: 50%;  /* Memperbesar lebar kolom pencarian */
+            width: 50%;
             padding: 10px;
             border-radius: 5px;
             border: 2px solid #d2691e;
-            margin-top: 10px; /* Menambahkan margin atas agar ada jarak dengan tombol */
+            margin-top: 10px;
             font-size: 16px;
-            display: inline-block;
         }
         section {
             padding: 20px;
@@ -73,11 +82,14 @@
             background-color: #d2691e;
             color: #fcf3e3;
         }
-        </style>
-    </head>
-    </body>
+    </style>
+</head>
+<body>
     <header>
-        <h1>Perpustakaan Putri Rania Indriyani</h1>
+        <div class="logo">
+            <img src="https://www.gambaranimasi.org/data/media/53/animasi-bergerak-buku-0016.gif" alt="Animasi Buku">
+            <h1>Perpustakaan Putri Rania Indriyani</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -87,30 +99,28 @@
         </nav>
     </header>
     
-        <a href="https://www.gambaranimasi.org/cat-buku-53.htm"><img src="https://www.gambaranimasi.org/data/media/53/animasi-bergerak-buku-0016.gif" border="0" alt="animasi-bergerak-buku-0016" /></a>
+    <section id="home">
+        <input type="text" id="search" placeholder="Cari buku...">
+        <button onclick="searchBook()">Cari</button>
+    </section>
 
-        <section id="home">
-            <input type="text" id="search" placeholder="Cari buku...">
-            <button onclick="searchBook()">Cari</button>
-        </section>
+    <section id="home">
+        <h3>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani!</h3>
+        <p>
+          Selamat datang di perpustakaan saya, platform perpustakaan digital yang menyediakan akses ke berbagai jenis koleksi yang dapat diakses dengan mudah. Dengan perpustakaan digital ini, anda dapat menjelajahi berbagai kategori bacaan dari mana saja dan kapan saja.
+        </p>
+        <p>
+          Terima kasih telah berkunjung ke perpustakaan ini. Selamat membaca dan menjelajahi dunia pengetahuan!
+        </p>
+    </section>
 
-        <section id="home">
-            <h3>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani!</h3>
-            <p>
-              Selamat datang di perpustakaan saya, platform perpustakaan digital yang menyediakan akses ke berbagai jenis koleksi yang dapat diakses dengan mudah. Dengan perpustakaan digital ini, anda dapat menjelajahi berbagai kategori bacaan dari mana saja dan kapan saja.
-            </p>
-            <p>
-              Terima kasih telah berkunjung ke perpustakaan ini. Selamat membaca dan menjelajahi dunia pengetahuan!
-            </p>
-
-        </section>
-            <section id="home">
-            <h3>Collaboration</h3>
-            <p>Perpustakaan Putri Rania Indriyani bekerja sama dengan <a href="https://library.uii.ac.id/" target="_blank">Perpustakaan Islam Indonesia</a> untuk memperluas jangkauan dan mempermudah akses bagi pengguna dalam menemukan informasi yang dibutuhkan.</p>
-        </section>  
+    <section id="home">
+        <h3>Collaboration</h3>
+        <p>Perpustakaan Putri Rania Indriyani bekerja sama dengan <a href="https://library.uii.ac.id/" target="_blank">Perpustakaan Islam Indonesia</a> untuk memperluas jangkauan dan mempermudah akses bagi pengguna dalam menemukan informasi yang dibutuhkan.</p>
+    </section>
 
     <footer>
         <p>&copy; 2025 - Perpustakaan Putri Rania Indriyani</p>
     </footer>
- </body>   
+</body>
 </html>
