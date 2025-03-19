@@ -3,99 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Perpustakaan Putri Rania Indriyani</title>
+    <title>Homepage - Perpustakaan Putri Rania Indriyani</title>
     <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-                background-color: #ffebd7;
-            }
-            header {
-                display: flex;
-                justify-content: space-between;
-                background: #d2691e;
-                color: white;
-                padding: 15px;
-                text-align: center;
-                border-bottom: 3px solid #eccaa8; /Menambahkan garis pimisah/
-            }
-            .logo {
-                font-size: 28px;
-                font-weight: bold;
-            }
-            nav ul {
-                list-style: none;
-                padding: 0;
-                text-align: center;
-                margin-top: 20px;
-            }
-            nav ul li {
-                display: inline-block;
-                margin: 0 15px;
-            }
-            nav ul li a {
-                display: block;
-                padding: 10px 20px;
-                background-color: #ffd7ae;
-                color: #cd853f;
-                text-decoration: none;
-                border-radius: 5px;
-                border: 2px solid #cd853f;
-                font-weight: bold;
-                text-align: center;
-            }
-            nav ul li a:hover {
-                background-color: #cd853f;
-                color: #fcf3e3;
-            }
-            section {
-                padding: 20px;
-                margin: 20px;
-                background: #fcf3e3;
-                border-radius: 8px;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                text-align: justify;
-            }
-            .biodata-table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 10px;
-            }
-            .biodata-table th {
-                border: 1px solid #fcf3e3;
-                padding: 10px;
-                text-align: left;
-            }
-            .biodata-table td {
-                border: 1px solid #f4a25b;
-                padding: 10px;
-                text-align: left;
-            }
-            .biodata-table th {
-                background-color: #f4a25b;
-                color: #fcf3e3;
-            }
-            .biodata-table td {
-                background-color: #fcf3e3;
-            }
-            .biodata-table td a {
-                color: #000000;
-                text-decoration: none;
-                font-weight: bold;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #feead7;
         }
-            footer{
-                text-align: center;
-                padding: 15px;
-                background-color: #d2691e;
-                color: #fcf3e3;
-            }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #d2691e;
+            color: white;
+            padding: 15px;
+            border-bottom: 3px solid #eccaa8;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            margin-right: 15px;
+            width: 80px;
+            height: auto;
+        }
+        .logo h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+        nav {
+            margin-left: auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #ffd7ae;
+            color: #cd853f;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #cd853f;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            background-color: #cd853f;
+            color: #fcf3e3;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background: #fcf3e3;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+        }
+        .biodata-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .biodata-table th {
+            border: 1px solid #fcf3e3;
+            padding: 10px;
+            text-align: left;
+        }
+        .biodata-table td {
+            border: 1px solid #f4a25b;
+            padding: 10px;
+            text-align: left;
+        }
+        .biodata-table th {
+            background-color: #f4a25b;
+            color: #fcf3e3;
+        }
+        .biodata-table td {
+            background-color: #fcf3e3;
+        }
+        .biodata-table td a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #d2691e;
+            color: #fcf3e3;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Perpustakaan Putri Rania Indriyani</h1>
+        <div class="logo">
+            <img src="https://www.gambaranimasi.org/data/media/53/animasi-bergerak-buku-0016.gif" alt="Animasi Buku">
+            <h1>Perpustakaan Putri Rania Indriyani</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -104,8 +117,6 @@
             </ul>
         </nav>
     </header>
-    
-<a href="https://www.gambaranimasi.org/cat-buku-53.htm"><img src="https://www.gambaranimasi.org/data/media/53/animasi-bergerak-buku-0016.gif" border="0" alt="animasi-bergerak-buku-0016" /></a>
 
     <section id="about">
             <table class="biodata-table">
