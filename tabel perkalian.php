@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<h2>Tabel Perkalian 1 sampai 10 (Gambar)</h2>
+<h2>Tabel Perkalian 1 sampai 10</h2>
 <img src="https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01j7g9rmwyhyfwvpkpw94nk58q.png" alt="Tabel Perkalian 1 sampai 10">
 
 </body>
