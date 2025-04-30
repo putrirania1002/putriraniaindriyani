@@ -97,6 +97,30 @@
     .book a:hover {
       text-decoration: underline;
     }
+      .event {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      overflow: hidden;
+      }
+    .event img {
+      width: 150px;
+      height: auto;
+      object-fit: cover;
+    }
+    .event-details {
+      padding: 15px;
+      flex: 1;
+    }
+    .event h2 {
+      margin-top: 0;
+    }
+    .event .date {
+      color: #888;
+      font-size: 0.9em;
+    }
     footer {
       background-color: #003366;
       color: white;
@@ -165,6 +189,52 @@
       </div>
     </section>
   </div>
+
+  <div class="container" id="event-list">
+    <!-- Event akan dimuat di sini -->
+  </div>
+
+  <script>
+    const events = [
+      {
+        title: "Pameran Buku Sastra Nusantara",
+        date: "12 - 15 Mei 2025",
+        location: "Perpustakaan Digital Jakarta",
+        description: "Temukan karya sastra dari seluruh penjuru Nusantara. Diskon buku hingga 50%.",
+        image: "https://png.pngtree.com/png-clipart/20220508/original/pngtree-vintage-books-fair-and-literature-festival-sketch-poster-png-image_7654523.png"
+      },
+      {
+        title: "Pameran Buku Anak & Remaja",
+        date: "20 - 25 Mei 2025",
+        location: "Perpustakaan Digital Bandung",
+        description: "Pameran khusus buku anak dan remaja dengan kegiatan edukatif dan lomba mewarnai.",
+        image: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/book-fair%2C-school-template-design-01d66800caaae567b745f65ab12bf4cf_screen.jpg?ts=1658640386"
+      },
+      {
+        title: "Festival Buku Digital",
+        date: "5 Agustus 2025",
+        location: "Perpustakaan Digital Online",
+        description: "Akses gratis ribuan buku digital dan webinar dengan penulis ternama.",
+        image: "https://st4.depositphotos.com/3474805/38777/v/450/depositphotos_387775774-stock-illustration-book-fair-poster-flyer-banner.jpg"
+      }
+    ];
+
+    const container = document.getElementById("event-list");
+
+    events.forEach(event => {
+      const eventEl = document.createElement("div");
+      eventEl.className = "event";
+      eventEl.innerHTML = `
+        <img src="${event.image}" alt="${event.title}">
+        <div class="event-details">
+          <h2>${event.title}</h2>
+          <p class="date">${event.date} | ${event.location}</p>
+          <p>${event.description}</p>
+        </div>
+      `;
+      container.appendChild(eventEl);
+    });
+  </script>
 
   <footer>
     <p>&copy; 2025 Perpustakaan Digital Putri Rania Indriyani. All rights reserved.</p>
