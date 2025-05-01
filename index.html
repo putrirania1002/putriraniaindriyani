@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -48,14 +48,11 @@
       font-weight: bold;
     }
     .container {
-      max-width: 1000px;
-      margin: 10px auto;
       padding: 20px;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      flex: 1;
+      max-width: 1200px;
+      margin: auto;
     }
-     section {
+      section {
       padding: 20px;
       margin: 20px;
       background: white;
@@ -63,14 +60,44 @@
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       text-align: justify;
     }
-    .search-bar {
-      margin-bottom: 20px;
+      .search-bar {
+      display: flex;
+      margin-bottom: 30px;
     }
+
     .search-bar input {
-      width: 50%;
-      padding: 5px;
-      border: 1px solid #ccc;
+      flex: 1;
+      padding: 10px;
       font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #00509e;
+      color: white;
+      cursor: pointer;
+      border-radius: 0 8px 8px 0;
+    }
+      .services {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .service-card {
+      flex: 1 1 200px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .service-card h3 {
+      margin-top: 0;
+      color: #3f51b5;
     }
     .book-list {
       display: flex;
@@ -96,6 +123,16 @@
     }
     .book a:hover {
       text-decoration: underline;
+    }
+    .book a, .service-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .book a:hover {
+      color: #1a237e;
     }
       .event {
       background: white;
@@ -130,6 +167,17 @@
     }
   </style>
 </head>
+<script>
+  function searchBooks() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const books = document.querySelectorAll(".book");
+
+    books.forEach(book => {
+      const title = book.textContent.toLowerCase();
+      book.style.display = title.includes(query) ? "block" : "none";
+    });
+  }
+</script>
 <body>
 
     <header>
@@ -148,33 +196,50 @@
     <a href="formulir pengunjung.php">Formulir Pengunjung</a>
   </nav>
 
-
   <div class="container">
+
     <div class="search-bar">
-      <input type="text" id="search" placeholder="Cari buku berdasarkan judul, penulis, atau kategori..." />
+      <input type="text" id="searchInput" placeholder="Cari buku...">
+      <button onclick="searchBooks()">Cari</button>
     </div>
 
-    <section id="home">
-      <h3>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani!</h3>
-      <p>
-        Selamat datang di perpustakaan saya, platform perpustakaan digital yang menyediakan akses ke berbagai jenis koleksi yang dapat diakses dengan mudah. Dengan perpustakaan digital ini, anda dapat menjelajahi berbagai kategori bacaan dari mana saja dan kapan saja.
-      </p>
-      <p>
-        Terima kasih telah berkunjung ke perpustakaan ini. Selamat membaca dan menjelajahi dunia pengetahuan!
-      </p>
-    </section>
+    <div class="services">
+      <div class="service-card">
+        <h3>Peminjaman Buku</h3>
+        <p>Pinjam buku digital dan baca di perangkatmu kapan saja.</p>
+      </div>
+      <div class="service-card">
+        <h3>Baca Online</h3>
+        <p>Langsung baca buku tanpa perlu mengunduhnya.</p>
+      </div>
+      <div class="service-card">
+        <h3>Rekomendasi Buku</h3>
+        <p>Dapatkan rekomendasi berdasarkan minat bacamu.</p>
+      </div>
+      <div class="service-card">
+        <h3>Koleksi Terbaru</h3>
+        <p>Lihat buku-buku digital yang baru saja ditambahkan.</p>
+      </div>
+    </div>
 
-    <section id="collaboration">
+    <container id="home">
+      <h3>Selamat Datang di Perpustakaan Digital Putri Rania Indriyani!</h3>
+      <p>Kami dengan senang hati menyambut Anda di platform perpustakaan digital yang dirancang untuk memberikan kemudahan akses terhadap berbagai jenis koleksi bacaan. Di sini, Anda dapat menemukan beragam kategori buku, artikel, jurnal, dan sumber pengetahuan lainnya yang dapat diakses kapan saja dan dari mana saja.</p>
+      <p>Perpustakaan ini bertujuan untuk mendukung semangat belajar dan memperluas wawasan semua kalangan, mulai dari pelajar, mahasiswa, hingga masyarakat umum. Dengan antarmuka yang ramah pengguna dan koleksi yang terus diperbarui, kami berharap Anda mendapatkan pengalaman membaca yang menyenangkan dan bermanfaat.</p>
+      <p>Terima kasih telah mengunjungi perpustakaan kami.
+        Menjelajah, membaca, dan menimba ilmu tanpa batas!</p>
+    </container>
+
+    <container id="collaboration">
       <h3>Collaboration</h3>
       <p>
         Perpustakaan Putri Rania Indriyani bekerja sama dengan 
         <a href="https://library.uii.ac.id/" target="_blank">Perpustakaan Islam Indonesia</a> 
         untuk memperluas jangkauan dan mempermudah akses bagi pengguna dalam menemukan informasi yang dibutuhkan.
       </p>
-    </section>
+    </container>
 
-    <section id="books">
-      <h3>Koleksi</h3>
+    <container id="books">
       <div class="book-list">
         <div class="book">
           <img src="https://cdn.gramedia.com/uploads/items/9789797944995_senja_hujan-_-cerita-yang-telah-usai.jpg" alt="Buku 1">
@@ -189,7 +254,7 @@
           <a href="https://drive.google.com/file/d/1S2wGlrY7TV55x9fnYynEfMy3onGE3nQP/view?usp=drivesdk" target="_blank">Matahari</a>
         </div>
       </div>
-    </section>
+    </container>
   </div>
 
   <div class="container" id="event-list">
@@ -241,6 +306,7 @@
   <footer>
     <p>&copy; 2025 Perpustakaan Digital Putri Rania Indriyani. All rights reserved.</p>
   </footer>
-  
+ 
 </body>
 </html>
+
