@@ -65,6 +65,16 @@
     header img {
       height: 60px;
     }
+    #darkModeToggle {
+      background: #fff;
+      color: #003366;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 16px;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;    height: 60px;
+    }
     nav {
       background-color: #00509e;
       display: flex;
@@ -164,7 +174,7 @@
       text-decoration: underline;
     }
     .book a, .service-card {
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.10s, box-shadow 0.10s;
     }
     .service-card:hover {
       transform: translateY(-5px);
@@ -214,6 +224,53 @@
       padding: 15px 0;
       margin-top: auto;
     }
+    /* Animasi */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* DARK MODE */
+    body.dark-mode {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode header,
+    body.dark-mode nav,
+    body.dark-mode footer {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    body.dark-mode nav a {
+      color: #ccc;
+    }
+
+    body.dark-mode .service-card,
+    body.dark-mode section,
+    body.dark-mode .event,
+    body.dark-mode .book {
+      background-color: #2c2c2c;
+      color: #f1f1f1;
+      box-shadow: none;
+    }
+
+    body.dark-mode .search-bar input {
+      background-color: #333;
+      color: white;
+      border: 1px solid #555;
+    }
+
+    body.dark-mode .search-bar button {
+      background-color: #444;
+      color: white;
+    }
+
+    body.dark-mode a {
+      color: #81d4fa;
+    } 
     /* Animasi muncul scroll */
     @keyframes fadeInUp {
       from {
@@ -240,6 +297,7 @@
       <h1>Perpustakaan Digital Putri Rania Indriyani</h1>
       <p>Akses buku digital dari berbagai kategori dan bidang ilmu</p>
     </div>
+    <button onclick="toggleDarkMode()" id="darkModeToggle">Dark Mode</button> 
   </header>
 
 <nav class="navbar navbar-expand-md" style="background-color: #00509e; padding-top: 5px; padding-bottom: 5px;">
@@ -331,6 +389,12 @@
           const title = book.textContent.toLowerCase();
           book.style.display = title.includes(query) ? "block" : "none";
         });
+      } 
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.getElementById("darkModeToggle");
+      btn.textContent = document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
+    
       }
 
     const events = [
