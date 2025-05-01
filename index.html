@@ -105,25 +105,36 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
     }
     .book {
-      text-align: center;
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
       width: 200px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .book:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
     .book img {
       width: 100%;
-      border-radius: 5px;
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      height: 280px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
     .book a {
-      display: block;
-      margin-top: 10px;
       font-weight: bold;
       color: #003366;
       text-decoration: none;
+      display: block;
+      text-align: center;
     }
     .book a:hover {
+      color: #1a237e;
       text-decoration: underline;
     }
     .book a, .service-card {
@@ -136,29 +147,39 @@
     .book a:hover {
       color: #1a237e;
     }
-      .event {
+    .event {
       background: white;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
       display: flex;
       overflow: hidden;
-      }
+      padding: 10px;
+      align-items: center;
+    }
     .event img {
-      width: 150px;
+      width: 100px;
       height: auto;
       object-fit: cover;
+      border-radius: 4px;
     }
     .event-details {
-      padding: 15px;
+      padding: 10px;
       flex: 1;
     }
+
     .event h2 {
       margin-top: 0;
+      font-size: 1.1rem;
     }
+
     .event .date {
-      color: #888;
-      font-size: 0.9em;
+      color: #666;
+      font-size: 0.85em;
+    }
+    .event p {
+      margin: 5px 0;
+      font-size: 0.95em;
     }
     footer {
       background-color: #003366;
@@ -189,7 +210,7 @@
     </div>
   </header>
 
-  <nav class="navbar navbar-expand-md" style="background-color: #00509e; padding-top: 5px; padding-bottom: 5px;">
+<nav class="navbar navbar-expand-md" style="background-color: #00509e; padding-top: 5px; padding-bottom: 5px;">
     <div class="container-fluid justify-content-center px-2">
       <button class="navbar-toggler text-white border-white p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span class="navbar-toggler-icon"></span>
@@ -199,7 +220,8 @@
           <a class="nav-link text-white fw-bold px-2 small" href="index.html">Home</a>
           <a class="nav-link text-white fw-bold px-2 small" href="about.html">About Me</a>
           <a class="nav-link text-white fw-bold px-2 small" href="contact.html">Contact</a>
-          <a class="nav-link text-white fw-bold px-2 small" href="tabel perkalian.php">Tabel Perkalian</a>
+          <a 
+  class="nav-link text-white fw-bold px-2 small" href="tabel perkalian.php">Tabel Perkalian</a>
           <a class="nav-link text-white fw-bold px-2 small" href="formulir pengunjung.php">Formulir Pengunjung</a>
         </div>
       </div>
@@ -264,7 +286,7 @@
     </container>
   </div>
 
-  <div class="container" id="event-list">
+  <div id="event-list" style="max-width: 1000px; margin: 0 auto; padding: 0 15px;">
     <!-- Event akan dimuat di sini -->
   </div>
 
@@ -313,6 +335,5 @@
   <footer>
     <p>&copy; 2025 Perpustakaan Digital Putri Rania Indriyani. All rights reserved.</p>
   </footer>
- 
 </body>
 </html>
