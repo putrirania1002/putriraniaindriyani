@@ -22,6 +22,34 @@
       flex-direction: column;
       min-height: 100vh;
     }
+      /* Starfield background */
+      .starfield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite ease-in-out alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.3; transform: scale(1); }
+      to { opacity: 1; transform: scale(1.5); }
+    }
+    @keyframes openBook {
+      0% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(-5deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
     header {
       background-color: #003366;
       color: white;
@@ -66,7 +94,6 @@
       display: flex;
       margin-bottom: 30px;
     }
-
     .search-bar input {
       flex: 1;
       padding: 10px;
@@ -75,7 +102,6 @@
       border-radius: 8px 0 0 8px;
       outline: none;
     }
-
     .search-bar button {
       padding: 10px 20px;
       border: none;
@@ -188,20 +214,26 @@
       padding: 15px 0;
       margin-top: auto;
     }
+    /* Animasi muncul scroll */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    } 
   </style>
 </head>
-<script>
-  function searchBooks() {
-    const query = document.getElementById("searchInput").value.toLowerCase();
-    const books = document.querySelectorAll(".book");
 
-    books.forEach(book => {
-      const title = book.textContent.toLowerCase();
-      book.style.display = title.includes(query) ? "block" : "none";
-    });
-  }
-</script>
 <body>
+  <div class="starfield" id="starfield"></div>
 
     <header>
     <div class="title">
@@ -290,7 +322,17 @@
     <!-- Event akan dimuat di sini -->
   </div>
 
-  <script>
+    <!-- Script Animasi Scroll & Event -->
+    <script>
+      function searchBooks() {
+        const query = document.getElementById("searchInput").value.toLowerCase();
+        const books = document.querySelectorAll(".book");
+        books.forEach(book => {
+          const title = book.textContent.toLowerCase();
+          book.style.display = title.includes(query) ? "block" : "none";
+        });
+      }
+
     const events = [
       {
         title: "Pameran Buku Sastra Nusantara",
@@ -330,6 +372,31 @@
       `;
       container.appendChild(eventEl);
     });
+
+        // Scroll animation effect
+        const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-fadeInUp");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".service-card, .book, .event").forEach(el => {
+      observer.observe(el);
+    });
+
+    // Starfield animation
+    const starfield = document.getElementById('starfield');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      starfield.appendChild(star);
+    }
   </script>
 
   <footer>
