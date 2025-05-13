@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About - Perpustakaan Digital</title>
 
-    <!-- Bootstrap CSS & JS -->
+<!-- Bootstrap CSS & JS -->
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Swiper CSS -->
 
@@ -35,7 +36,7 @@
       background-image: url('https://i.pinimg.com/736x/9d/5e/53/9d5e53430e9b8f885dcefc1e072ff730.jpg');
       background-size: cover;
       background-position: center;
-      height: 400px;
+      height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -68,7 +69,13 @@
       font-size: 20px;
       margin-bottom: 30px;
     }
-  </style>
+  table th {
+    background-color: #f0f8ff;
+  }
+  table td, table th {
+    vertical-align: middle;
+  }
+</style>
 </head>
 <body>
 
@@ -81,26 +88,27 @@
         <span class="fw-bold text-primary">Perpustakaan Digital Putri Rania Indriyani</span>
       </a>
 
-      <!-- Toggle button for mobile -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- Toggle button for mobile -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-      <!-- Navigasi -->
-      <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link fw-bold text-primary" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold text-primary" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-bold text-primary" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <!-- Navigasi -->
+  <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link fw-bold text-primary" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fw-bold text-primary" href="about.html">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fw-bold text-primary" href="contact.html">Contact</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
   </nav>
 </header>
 
@@ -108,64 +116,58 @@
 
 <div class="cover">
   <div class="cover-content">
-    <h1>About Me</h1>
+    <h1>Welcome to the Digital Library</h1>
+    <p>Explore knowledge, archives, and resources for your research</p>
     </form>
   </div>
 </div>
 
-<!-- SECTION: Data Diri -->
-<section class="container my-5">
-    <h3 class="text-center mb-4 text-primary">Data Diri</h3>
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <tbody>
-          <tr>
-            <th>Nama Lengkap</th>
-            <td>Putri Rania Indriyani</td>
-          </tr>
-          <tr>
-            <th>NIM</th>
-            <td>1234567890</td>
-          </tr>
-          <tr>
-            <th>Program Studi</th>
-            <td>Ilmu Perpustakaan</td>
-          </tr>
-          <tr>
-            <th>Fakultas</th>
-            <td>Ilmu Sosial dan Ilmu Politik</td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td>putrirania@email.com</td>
-          </tr>
-        </tbody>
-      </table>
+<!-- TABEL BIODATA DIRI -->
+<section class="py-5 bg-light">
+    <div class="container">
+      <h3 class="text-center text-primary fw-bold mb-4">Tabel Biodata Diri</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped shadow">
+          <tbody>
+            <tr>
+              <th scope="row" class="text-primary w-25">Nama Lengkap</th>
+              <td>Putri Rania Indriyani</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-primary">Nim</th>
+              <td>220709032</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-primary">Program Studi</th>
+              <td>S1 Perpustakaan dan Sains Informasi</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-primary">Fakultas</th>
+              <td>Ilmu Budaya</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-primary">Universitas</th>
+                <td>Sumatera Utara</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-primary">Domisili</th>
+                <td>Medan</td>
+              </tr>
+            <tr>
+              <th scope="row" class="text-primary">E-mail</th>
+              <td>putriraniaindriyani@gmail.com</td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-primary">No. HP</th>
+              <td>0823-6988-3283</td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </section>
+  </section>  
 
-    <!-- Swiper JS -->
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-<script>
-  const swiper = new Swiper(".mySwiper", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    loop: true,
-    breakpoints: {
-      1024: { slidesPerView: 4 },
-      768: { slidesPerView: 3 },
-      480: { slidesPerView: 2 },
-      0: { slidesPerView: 1 }
-    }
-  });
-</script>
-  
   <footer class="bg-light text-center text-muted py-4 mt-5">
     <div class="container">
       &copy; 2025 Perpustakaan Digital Putri Rania Indriyani. All rights reserved.
