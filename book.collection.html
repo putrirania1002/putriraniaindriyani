@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Koleksi - Perpustakaan Digital</title>
 
+  <!-- Bootstrap CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    header { border-bottom: 1px solid #ddd; background-color: white; }
+
+    .cover {
+      background-image: url('https://i.pinimg.com/736x/89/fc/22/89fc226cd5d5dbc51140362c94016b0a.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      width: 100%;
+    }
+    .cover h1 { font-size: 48px; margin-bottom: 10px; }
+    .cover p { font-size: 20px; margin-bottom: 30px; }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .search-bar input[type="text"] {
+      flex: 1;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 50px 0 0 50px;
+      outline: none;
+    }
+    .search-bar button {
+      padding: 12px 25px;
+      background-color: #005bac;
+      color: white;
+      border: none;
+      border-radius: 0 50px 50px 0;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .search-bar button:hover {
+      background-color: #004a8d;
+    }
+
+    .new-books {
+      background-color: #f5f7f9;
+      padding: 50px 0;
+    }
+    .new-books .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .new-books h2 {
+      font-size: 28px;
+      color: #003366;
+      margin-bottom: 30px;
+      border-left: 5px solid #003366;
+      padding-left: 15px;
+    }
+    .swiper {
+      padding-bottom: 50px;
+    }
+    .swiper-slide.book-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .swiper-slide.book-card:hover {
+      transform: translateY(-5px);
+    }
+    .book-card img {
+      max-width: 100%;
+      height: 220px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+    .book-card h3 {
+      font-size: 16px;
+      margin: 8px 0 4px;
+      color: #003366;
+    }
+    .book-card p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="https://www.gambaranimasi.org/data/media/53/animasi-bergerak-buku-0035.gif" alt="Logo" height="50" class="me-2">
+          <span class="fw-bold text-primary">Perpustakaan Digital Putri Rania Indriyani</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link fw-bold text-primary" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold text-primary" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold text-primary" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="cover">
+    <div class="cover-content">
+      <h1>Book Collection</h1>
+      <p>Akses berbagai koleksi digital</p>
+      <form class="search-bar" id="searchForm">
+        <input type="text" name="q" id="searchInput" placeholder="Search library resources..." />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+
+  <section id="searchResults" class="py-5 bg-white" style="display: none;">
+    <div class="container">
+      <h2>Search Results</h2>
+      <div class="row" id="resultsContainer"></div>
+    </div>
+  </section>
+
+  <!-- Book Collection -->
+  <section class="new-books">
+    <div class="container">
+      <h2>Collection</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="bookSlides">
+          <!-- Book slides inserted by JS -->
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <script>
+    const books = [
+      {
+        title: "MATAHARI",
+        author: "Tere Liye",
+        image: "https://cdn.gramedia.com/uploads/items/img20220905_11433462.jpg",
+        link: "https://drive.google.com/file/d/1zUmD2qPW29Z8speZyFpIo2eIw_BoPgqP/view?usp=drivesdk"
+      },
+      {
+        title: "CANTIK ITU LUKA",
+        author: "Eka Kurniawan",
+        image: "https://assets-a1.kompasiana.com/items/album/2016/05/31/cantik-itu-luka-574d7ef702b0bda506d9e016.jpg",
+        link: "https://drive.google.com/file/d/1zfviSVy1b_xss18fmnrQLFHZ4ShiXykV/view?usp=drivesdk"
+      },
+      {
+        title: "YANG FANA ADALAH WAKTU",
+        author: "Sapardi Djoko Damono",
+        image: "https://cdn.gramedia.com/uploads/items/9786020383057_Yang-Fana-Adalah-Waktu.jpg",
+        link: "https://drive.google.com/file/d/1q7NbF8FTSub4HhZgw75icVYRNztTBH2a/view?usp=drivesdk"
+      },
+      {
+        title: "HUJAN",
+        author: "Tere Liye",
+        image: "https://i.pinimg.com/736x/70/07/d5/7007d5a3f97a9983f3408ceb13e42e99.jpg",
+        link: "https://drive.google.com/file/d/1zUssIo7tVWLYlLGZRe_KrXxfdCS9vFTE/view?usp=drivesdk"
+      },
+      {
+        title: "LAUT BERCERITA",
+        author: "Leila S. Chudori",
+        image: "https://i.pinimg.com/736x/fb/4a/47/fb4a47f0c3a66d6545a04f554504d55e.jpg",
+        link: "https://drive.google.com/file/d/1z_PhRarTYkyb4XUf0v_z69DGQ7ZtmCI_/view?usp=drivesdk"
+      },
+      {
+        title: "PULANG",
+        author: "Leila S. Chudori",
+        image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1465061573i/16174176.jpg",
+        link: "https://drive.google.com/file/d/1z_wK-nfSACpRYQuvwNAdt3GptG4J6La2/view?usp=drivesdk"
+      }
+    ];
+
+    // Populate books into swiper
+    const swiperWrapper = document.getElementById("bookSlides");
+    books.forEach(book => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide book-card";
+      slide.innerHTML = `
+        <a href="${book.link}" target="_blank">
+          <img src="${book.image}" alt="${book.title}" />
+        </a>
+        <h3>${book.title}</h3>
+        <p>${book.author}</p>
+      `;
+      swiperWrapper.appendChild(slide);
+    });
+
+    // Inisialisasi Swiper
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        576: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        992: { slidesPerView: 4 },
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      }
+    });
+
+    // Search form logic
+    document.getElementById("searchForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const results = books.filter(book => book.title.toLowerCase().includes(query));
+      const resultsContainer = document.getElementById("resultsContainer");
+      const searchResultsSection = document.getElementById("searchResults");
+
+      resultsContainer.innerHTML = "";
+      if (results.length > 0) {
+        results.forEach(book => {
+          const card = document.createElement("div");
+          card.className = "col-md-3 mb-4";
+          card.innerHTML = `
+            <div class="book-card p-2 border rounded shadow-sm text-center h-100">
+              <a href="${book.link}" target="_blank">
+                <img src="${book.image}" alt="${book.title}" class="img-fluid mb-2" style="height: 220px; object-fit: cover;">
+              </a>
+              <h5>${book.title}</h5>
+              <p>${book.author}</p>
+            </div>
+          `;
+          resultsContainer.appendChild(card);
+        });
+      } else {
+        resultsContainer.innerHTML = `<p class="text-muted">No books found with that title.</p>`;
+      }
+
+      searchResultsSection.style.display = "block";
+      window.scrollTo({ top: searchResultsSection.offsetTop - 70, behavior: 'smooth' });
+    });
+  </script>
+
+  <footer class="bg-light text-center text-muted py-4 mt-5">
+    <div class="container">
+      &copy; 2025 Perpustakaan Digital Putri Rania Indriyani. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
