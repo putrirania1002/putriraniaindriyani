@@ -84,6 +84,30 @@
     .search-bar button:hover {
       background-color: #004a8d;
     }
+    .cookie-banner {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #0A3990;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      z-index: 10000;
+      display: none;
+      max-width: 320px;
+      animation: slideUp 0.5s ease;
+      font-size: 0.9rem;
+    }
+    @keyframes slideUp {
+      from {
+      transform: translateY(30px);
+      opacity: 0;
+      }
+      to {
+      transform: translateY(0);
+      opacity: 1;
+      }
     .new-books {
       background-color: #f5f7f9;
       padding: 50px 0;
@@ -491,73 +515,71 @@
   });
 </script>
 
-<div id="cookieConsent" style="position: fixed; bottom: 0; width: 100%; background: #003366; color: white; padding: 15px; text-align: center; z-index: 1000; display: none;">
+  <div id="cookieConsent" style="position: fixed; top: 0; width: 100%; background: #003366; color: white; padding: 15px; text-align: center; z-index: 9999; display: none;">
   Situs ini menggunakan cookie untuk meningkatkan pengalaman pengguna. 
   <button id="acceptCookies" style="background-color: #fff; color: #003366; border: none; padding: 8px 15px; margin-left: 15px; border-radius: 5px; font-weight: bold;">Saya Setuju</button>
 </div>
 
+<div id="cookieBanner" class="cookie-banner">
+  <div>
+    <p style="margin: 0;">Kami menggunakan cookie untuk meningkatkan pengalaman Anda.</p>
+    <div class="mt-2 d-flex gap-2 justify-content-end">
+      <button onclick="acceptCookies()" class="btn btn-sm btn-light">Terima</button>
+      <button onclick="declineCookies()" class="btn btn-sm btn-outline-light">Tolak</button>
+    </div>
+  </div>
+</div>
+
 <script>
   function setCookie(name, value, days) {
-    const expires = new Date(Date.now() + days * 864e5).toUTCString();
-    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; Secure; SameSite=Lax';
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
   }
 
   function getCookie(name) {
-    return document.cookie.split('; ').reduce((r, v) => {
-      const parts = v.split('=');
-      return parts[0] === name ? decodeURIComponent(parts[1]) : r
-    }, '');
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';'); for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!getCookie('cookieConsent')) {
-      document.getElementById('cookieConsent').style.display = 'block';
+  function checkCookieConsent() {
+    let consent = getCookie("cookieConsent");
+    if (!consent) {
+      document.getElementById("cookieBanner").style.display = "block";
+    } else if (consent === "accepted") {
+      greetUser();
     }
+  }
 
-    document.getElementById('acceptCookies').addEventListener('click', () => {
-      setCookie('cookieConsent', 'accepted', 365);
-      document.getElementById('cookieConsent').style.display = 'none';
-    });
-  });
+  function acceptCookies() {
+    setCookie("cookieConsent", "accepted", 30);
+    document.getElementById("cookieBanner").style.display = "none";
+    greetUser();  }
 
-</script>
+  function declineCookies() {
+    setCookie("cookieConsent", "declined", 30);
+    document.getElementById("cookieBanner").style.display = "none";
+  }
 
-  <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4 flex flex-col md:flex-row justify-between items-center z-50 hidden">
-    <p class="text-sm mb-2 md:mb-0">
-      Website ini menggunakan cookies untuk meningkatkan pengalaman pengguna dan keamanan data.
-      <a href="privacy-policy.html" class="underline text-yellow-400">Baca kebijakan privasi</a>.
-    </p>
-    <div class="flex space-x-2">
-      <button onclick="acceptCookies()" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">Saya Setuju</button>
-      <button onclick="declineCookies()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Tolak</button>
-    </div>
-  </div>
-
-  <script>
-    function hasAcceptedCookies() {
-      return document.cookie.split('; ').some(cookie => cookie.startsWith('cookiesAccepted='));
-    }
-
-    window.onload = function () {
-      if (!hasAcceptedCookies()) {
-        document.getElementById('cookie-banner').classList.remove('hidden');
+  function greetUser() {
+    let user = getCookie("visitorName");
+    if (!user) {
+      user = prompt("Selamat datang! Masukkan nama Anda:", "");
+      if (user != "" && user != null) {
+        setCookie("visitorName", user, 30);
+        alert("Halo " + user + ", selamat datang di Perpustakaan Digital!");
       }
-    };
-
-    function acceptCookies() {
-      const d = new Date();
-      d.setFullYear(d.getFullYear() + 1);
-      document.cookie = "cookiesAccepted=true; expires=" + d.toUTCString() + "; path=/";
-      document.getElementById('cookie-banner').classList.add('hidden');
+    } else {
+      alert("Selamat datang kembali, " + user + "!");
     }
-
-    function declineCookies() {
-      document.cookie = "cookiesAccepted=false; path=/; max-age=0";
-      alert("Anda menolak penggunaan cookies. Beberapa fitur mungkin tidak bekerja optimal.");
-      document.getElementById('cookie-banner').classList.add('hidden');
-    }
+  }
   </script>
-
+  
 <footer class="bg-light text-center text-muted py-4 mt-5">
   <div class="container">
     &copy; 2025 Perpustakaan Digital Putri Rania Indriyani. All rights reserved.
