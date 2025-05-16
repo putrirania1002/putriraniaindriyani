@@ -64,6 +64,5 @@
             </tr>
         <?php endfor; ?>
     </table>
-
 </body>
 </html>
