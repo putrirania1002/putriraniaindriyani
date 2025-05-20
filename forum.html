@@ -1,56 +1,163 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Forum Diskusi - Perpustakaan Digital</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forum - Perpustakaan Digital</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <style>
-    #cookieModal .modal-footer .btn {
-      margin-left: 10px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .comment, .reply {
-      margin-bottom: 1rem;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    header {
+      border-bottom: 1px solid #ddd;
+      background-color: white;
+    }
+    .cover {
+      background-image: url('https://i.pinimg.com/736x/47/36/fb/4736fb07e6d72f6cf451389a4062befd.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      width: 100%;
+    }
+    .cover h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    .cover p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .comment {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
     }
     .reply {
-      margin-left: 2rem;
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-left: 3px solid #0d6efd;
+      border-radius: 5px;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    @media (max-width: 576px) {
+      .cover h1 {
+        font-size: 32px;
+      }
+
+      .cover p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
-<body class="p-4">
 
-  <div class="container">
-    <h2 class="mb-4">Forum Diskusi</h2>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="https://www.gambaranimasi.org/data/media/53/animasi-bergerak-buku-0035.gif" alt="Logo" height="50" class="me-2">
+          <span class="fw-bold text-primary">Perpustakaan Digital Putri Rania Indriyani</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-primary" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-primary" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-primary" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <div id="user-section" class="mb-3">
-      <span id="user-info"></span>
-      <button class="btn btn-sm btn-danger" onclick="logoutUser()">Logout</button>
+  <div class="cover">
+    <div class="cover-content">
+      <h1>Welcome to the Digital Library</h1>
+      <p>Explore knowledge, archives, and resources for your research</p>
     </div>
-
-    <form onsubmit="submitComment(event)">
-      <div class="mb-3">
-        <textarea id="commentText" class="form-control" placeholder="Tulis komentar..." required></textarea>
-      </div>
-      <button class="btn btn-primary">Kirim Komentar</button>
-    </form>
-
-    <div class="mt-4 d-flex justify-content-between">
-      <div>
-        <label for="filterSelect">Urutkan:</label>
-        <select id="filterSelect" onchange="renderComments()" class="form-select w-auto d-inline-block">
-          <option value="newest">Terbaru</option>
-          <option value="popular">Terpopuler</option>
-        </select>
-      </div>
-      <div>
-        <button class="btn btn-outline-secondary btn-sm" onclick="prevPage()">Sebelumnya</button>
-        <span id="page-info"></span>
-        <button class="btn btn-outline-secondary btn-sm" onclick="nextPage()">Berikutnya</button>
-      </div>
-    </div>
-
-    <div id="comments" class="mt-4"></div>
   </div>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h3 class="text-center text-primary fw-bold mb-4">Forum Diskusi</h3>
+
+      <div class="card p-4 shadow-sm">
+        <div id="user-section" class="mb-3 d-flex justify-content-between align-items-center">
+          <span id="user-info" class="fw-semibold text-primary"></span>
+          <button class="btn btn-sm btn-danger" onclick="logoutUser()">Logout</button>
+        </div>
+
+        <form onsubmit="submitComment(event)">
+          <div class="mb-3">
+            <textarea id="commentText" class="form-control" placeholder="Tulis komentar..." rows="3" required></textarea>
+          </div>
+          <div class="text-end">
+            <button class="btn btn-primary">Kirim Komentar</button>
+          </div>
+        </form>
+
+        <div class="mt-4 row g-3 align-items-center justify-content-between">
+          <div class="col-md-auto">
+            <label for="filterSelect" class="form-label mb-0 me-2">Urutkan:</label>
+            <select id="filterSelect" onchange="renderComments()" class="form-select d-inline-block w-auto">
+              <option value="newest">Terbaru</option>
+              <option value="popular">Terpopuler</option>
+            </select>
+          </div>
+          <div class="col-md-auto">
+            <div class="d-flex align-items-center gap-2">
+              <button class="btn btn-outline-secondary btn-sm" onclick="prevPage()">Sebelumnya</button>
+              <span id="page-info" class="fw-semibold"></span>
+              <button class="btn btn-outline-secondary btn-sm" onclick="nextPage()">Berikutnya</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="comments" class="mt-4"></div>
+      </div>
+    </div>
+  </section>
 
   <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -69,7 +176,6 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     let user = localStorage.getItem("username");
     if (!user) {
@@ -87,10 +193,12 @@
       localStorage.removeItem("username");
       location.reload();
     }
+
     if (!localStorage.getItem("cookieAccepted")) {
       const cookieModal = new bootstrap.Modal(document.getElementById("cookieModal"));
       cookieModal.show();
     }
+
     function acceptCookies() {
       localStorage.setItem("cookieAccepted", true);
       const cookieModal = bootstrap.Modal.getInstance(document.getElementById("cookieModal"));
@@ -172,6 +280,7 @@
       const box = document.getElementById("replyBox" + id);
       box.style.display = box.style.display === "none" ? "block" : "none";
     }
+
     function likeComment(id) {
       const index = comments.findIndex(c => c.id === id);
       if (index > -1) {
@@ -180,6 +289,7 @@
         renderComments();
       }
     }
+
     function deleteComment(id) {
       if (confirm("Apakah Anda yakin ingin menghapus komentar ini?")) {
         comments = comments.filter(c => c.id !== id && c.parentId !== id);
@@ -194,6 +304,7 @@
         renderComments();
       }
     }
+
     function nextPage() {
       const total = comments.filter(c => !c.parentId).length;
       const maxPage = Math.ceil(total / commentsPerPage);
@@ -202,7 +313,14 @@
         renderComments();
       }
     }
+
     renderComments();
   </script>
+
+  <footer class="bg-light text-center text-muted py-4 mt-5">
+    <div class="container">
+      &copy; 2025 Perpustakaan Digital Putri Rania Indriyani. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
