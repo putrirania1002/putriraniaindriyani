@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Forum Diskusi - Perpustakaan Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #cookieModal .modal-footer .btn {
+      margin-left: 10px;
+    }
+    .comment, .reply {
+      margin-bottom: 1rem;
+    }
+    .reply {
+      margin-left: 2rem;
+    }
+  </style>
+</head>
+<body class="p-4">
+
+  <div class="container">
+    <h2 class="mb-4">Forum Diskusi</h2>
+
+    <div id="user-section" class="mb-3">
+      <span id="user-info"></span>
+      <button class="btn btn-sm btn-danger" onclick="logoutUser()">Logout</button>
+    </div>
+
+    <form onsubmit="submitComment(event)">
+      <div class="mb-3">
+        <textarea id="commentText" class="form-control" placeholder="Tulis komentar..." required></textarea>
+      </div>
+      <button class="btn btn-primary">Kirim Komentar</button>
+    </form>
+
+    <div class="mt-4 d-flex justify-content-between">
+      <div>
+        <label for="filterSelect">Urutkan:</label>
+        <select id="filterSelect" onchange="renderComments()" class="form-select w-auto d-inline-block">
+          <option value="newest">Terbaru</option>
+          <option value="popular">Terpopuler</option>
+        </select>
+      </div>
+      <div>
+        <button class="btn btn-outline-secondary btn-sm" onclick="prevPage()">Sebelumnya</button>
+        <span id="page-info"></span>
+        <button class="btn btn-outline-secondary btn-sm" onclick="nextPage()">Berikutnya</button>
+      </div>
+    </div>
+
+    <div id="comments" class="mt-4"></div>
+  </div>
+
+  <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cookie Consent</h5>
+        </div>
+        <div class="modal-body">
+          Situs ini menggunakan cookie untuk meningkatkan pengalaman pengguna. <a href="#">Pelajari lebih lanjut</a>.
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Tidak Setuju</button>
+          <button class="btn btn-primary" onclick="acceptCookies()">Setuju</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let user = localStorage.getItem("username");
+    if (!user) {
+      user = prompt("Masukkan nama pengguna:");
+      if (!user) {
+        alert("Nama pengguna diperlukan.");
+        location.reload();
+      } else {
+        localStorage.setItem("username", user);
+      }
+    }
+    document.getElementById("user-info").textContent = "Halo, " + user;
+
+    function logoutUser() {
+      localStorage.removeItem("username");
+      location.reload();
+    }
+    if (!localStorage.getItem("cookieAccepted")) {
+      const cookieModal = new bootstrap.Modal(document.getElementById("cookieModal"));
+      cookieModal.show();
+    }
+    function acceptCookies() {
+      localStorage.setItem("cookieAccepted", true);
+      const cookieModal = bootstrap.Modal.getInstance(document.getElementById("cookieModal"));
+      cookieModal.hide();
+    }
+
+    let comments = JSON.parse(localStorage.getItem("comments") || "[]");
+    let currentPage = 1;
+    const commentsPerPage = 5;
+
+    function submitComment(e, parentId = null) {
+      e.preventDefault();
+      const text = parentId ? document.getElementById("replyText" + parentId).value : document.getElementById("commentText").value;
+      if (!text.trim()) return;
+
+      const newComment = {
+        id: Date.now(),
+        user,
+        text,
+        time: new Date().toISOString(),
+        likes: 0,
+        parentId
+      };
+      comments.push(newComment);
+      localStorage.setItem("comments", JSON.stringify(comments));
+      if (!parentId) document.getElementById("commentText").value = "";
+      else document.getElementById("replyText" + parentId).value = "";
+      renderComments();
+    }
+
+    function renderComments() {
+      const commentContainer = document.getElementById("comments");
+      commentContainer.innerHTML = "";
+      const filter = document.getElementById("filterSelect").value;
+
+      let filtered = comments.filter(c => !c.parentId);
+      if (filter === "newest") {
+        filtered.sort((a, b) => new Date(b.time) - new Date(a.time));
+      } else if (filter === "popular") {
+        filtered.sort((a, b) => b.likes - a.likes);
+      }
+
+      const start = (currentPage - 1) * commentsPerPage;
+      const paginated = filtered.slice(start, start + commentsPerPage);
+      document.getElementById("page-info").textContent = `Hal ${currentPage} dari ${Math.ceil(filtered.length / commentsPerPage)}`;
+
+      for (let c of paginated) {
+        const div = document.createElement("div");
+        div.className = "comment";
+        div.innerHTML = `
+          <strong>${c.user}</strong> <small class="text-muted">${new Date(c.time).toLocaleString()}</small>
+          <p>${c.text}</p>
+          <button class="btn btn-sm btn-outline-success me-2" onclick="likeComment(${c.id})">Suka (${c.likes})</button>
+          <button class="btn btn-sm btn-outline-secondary me-2" onclick="toggleReply(${c.id})">Balas</button>
+          ${c.user === user ? `<button class="btn btn-sm btn-outline-danger" onclick="deleteComment(${c.id})">Hapus</button>` : ''}
+          <div id="replyBox${c.id}" style="display:none;" class="mt-2">
+            <textarea id="replyText${c.id}" class="form-control mb-2" placeholder="Tulis balasan..."></textarea>
+            <button class="btn btn-sm btn-primary" onclick="submitComment(event, ${c.id})">Kirim Balasan</button>
+          </div>
+        `;
+
+        const replies = comments.filter(r => r.parentId === c.id).sort((a, b) => new Date(b.time) - new Date(a.time));
+        for (let r of replies) {
+          const replyDiv = document.createElement("div");
+          replyDiv.className = "reply";
+          replyDiv.innerHTML = `
+            <strong>${r.user}</strong> <small class="text-muted">${new Date(r.time).toLocaleString()}</small>
+            <p>${r.text}</p>
+            ${r.user === user ? `<button class="btn btn-sm btn-outline-danger" onclick="deleteComment(${r.id})">Hapus</button>` : ''}
+          `;
+          div.appendChild(replyDiv);
+        }
+
+        commentContainer.appendChild(div);
+      }
+    }
+
+    function toggleReply(id) {
+      const box = document.getElementById("replyBox" + id);
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+    function likeComment(id) {
+      const index = comments.findIndex(c => c.id === id);
+      if (index > -1) {
+        comments[index].likes++;
+        localStorage.setItem("comments", JSON.stringify(comments));
+        renderComments();
+      }
+    }
+    function deleteComment(id) {
+      if (confirm("Apakah Anda yakin ingin menghapus komentar ini?")) {
+        comments = comments.filter(c => c.id !== id && c.parentId !== id);
+        localStorage.setItem("comments", JSON.stringify(comments));
+        renderComments();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderComments();
+      }
+    }
+    function nextPage() {
+      const total = comments.filter(c => !c.parentId).length;
+      const maxPage = Math.ceil(total / commentsPerPage);
+      if (currentPage < maxPage) {
+        currentPage++;
+        renderComments();
+      }
+    }
+    renderComments();
+  </script>
+</body>
+</html>
